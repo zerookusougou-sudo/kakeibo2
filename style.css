@@ -1,0 +1,303 @@
+:root {
+  --bg: #f4f6f8;
+  --card-bg: #ffffff;
+  --text: #1f2933;
+  --text-muted: #7b8794;
+  --border: #e4e7eb;
+  --income: #2e9e6b;
+  --income-bg: #e6f6ee;
+  --expense: #d64545;
+  --expense-bg: #fce8e8;
+  --accent: #3d7fd6;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+    "Segoe UI", Meiryo, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-header {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.app-header h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 20px 16px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* サマリー */
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.summary-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summary-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.summary-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  word-break: break-all;
+}
+
+.summary-card.income .summary-value {
+  color: var(--income);
+}
+
+.summary-card.expense .summary-value {
+  color: var(--expense);
+}
+
+/* フォーム */
+h2 {
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+}
+
+.form-section,
+.history-section {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px 18px;
+}
+
+.entry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.type-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.type-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.type-label {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: var(--text-muted);
+}
+
+.type-option input:checked + .expense-label {
+  border-color: var(--expense);
+  background: var(--expense-bg);
+  color: var(--expense);
+}
+
+.type-option input:checked + .income-label {
+  border-color: var(--income);
+  background: var(--income-bg);
+  color: var(--income);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+input,
+select {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+  width: 100%;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(61, 127, 214, 0.15);
+}
+
+.submit-btn {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.submit-btn:hover {
+  background: #336fbd;
+}
+
+/* 履歴 */
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.history-header h2 {
+  margin-bottom: 0;
+}
+
+.month-filter {
+  width: auto;
+  font-size: 0.9rem;
+  padding: 6px 10px;
+}
+
+.entry-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.entry-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+.entry-item:last-child {
+  border-bottom: none;
+}
+
+.entry-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.entry-category {
+  font-weight: 600;
+}
+
+.entry-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.entry-memo {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  word-break: break-word;
+}
+
+.entry-amount {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.entry-amount.income {
+  color: var(--income);
+}
+
+.entry-amount.expense {
+  color: var(--expense);
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: all 0.15s ease;
+}
+
+.delete-btn:hover {
+  color: var(--expense);
+  background: var(--expense-bg);
+}
+
+.empty-message {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 24px 0;
+  font-size: 0.9rem;
+}
+
+.empty-message.hidden {
+  display: none;
+}
+
+@media (max-width: 420px) {
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+  .summary-value {
+    font-size: 1rem;
+  }
+}
